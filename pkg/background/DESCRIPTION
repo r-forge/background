@@ -1,0 +1,11 @@
+Package: background
+Type: Package
+Title: This packages allow users to ``background'' R computations.
+Version: 0.1
+Date: 2011-04-07
+Author: Michael Kane
+Maintainer: Michael Kane <kaneplusplus@gmail.com>
+Depends: methods
+Description: More about what it does (maybe more than one line)
+License: LGPL2
+LazyLoad: yes
