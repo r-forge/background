@@ -4,11 +4,13 @@
 \alias{done}
 \alias{kill}
 \alias{killed}
+\alias{backend}
 \title{Functions for backgrounding calculations}
 \description{
 a description
 }
 \usage{
+backend(backendName=NULL)
 bg(expr, par.gen=options()$background.backend)
 done(process)
 fg(process)
@@ -16,6 +18,7 @@ kill(process)
 killed(process)
 }
 \arguments{
+  \item{backendName}{The name of the reference class backgrounding the calculations}
   \item{expr}{The expression to be calculated in the background}
   \item{par.gen}{An object inherited from \code{bg.interface} that 
     provides the concurrent backend}
