@@ -62,3 +62,11 @@ multicore.process <- setRefClass("multicore.process",
   )
 )
 assign("multicore.process", multicore.process, .GlobalEnv)
+
+.onLoad <- function(libname, pkgname) {
+  backend <- options()$background.backend
+  if (!is.null(backend) && !(backend=="sequential.process")) {
+    warning("A backend has previously been set.  Multicore is now the backend")
+  }
+  options(background.backend="multicore.process")
+}
