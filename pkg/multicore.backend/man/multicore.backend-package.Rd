@@ -1,21 +1,16 @@
-\name{background-package}
-\alias{background-package}
-\alias{background}
+\name{multicore.backend-package}
+\alias{multicore.backend-package}
+\alias{multicore.backend}
 \docType{package}
 \title{
-Background calculations
+Use multicore to background calculations
 }
 \description{
-Perform calculations concurently in the background thereby freeing the \R
-console to perform other tasks.  The package currently supports a sequential
-backend, where the calculation is evaluted when it is brought into the
-foreground along with a multicore backend, where the calculation is started
-immediately after it is backgrounded.  Other backends such as Redis,
-pvm, and nws are planned.
+put description here
 }
 \details{
 \tabular{ll}{
-Package: \tab background\cr
+Package: \tab multicore.backend\cr
 Type: \tab Package\cr
 Version: \tab 0.1\cr
 Date: \tab 2011-04-07\cr
