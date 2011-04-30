@@ -1,6 +1,6 @@
-Package: background
+Package: multicore.backend
 Type: Package
-Title: This packages allow users to ``background'' computations.
+Title: This package a multicore backend for background computations.
 Version: 0.1
 Date: 2011-04-07
 Author: Michael Kane

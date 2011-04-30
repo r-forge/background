@@ -4,16 +4,16 @@ require(utils)
 
 
 process.interface <- setRefClass("process.interface",
-  fields = list(evaluated="logical", has.task="logical", expr="call", 
-    env="environment", val="ANY", killed="logical"),
+  fields = list(.evaluated="logical", .has.task="logical", .expr="call", 
+    .env="environment", .val="ANY", .killed="logical"),
 
   methods=list(
 
     inherits.from.process.interface=function() TRUE,
 
     initialize=function() {
-      killed <<- FALSE
-      evaluated <<- FALSE
+      .killed <<- FALSE
+      .evaluated <<- FALSE
       .self
     },
 
@@ -28,12 +28,12 @@ process.interface <- setRefClass("process.interface",
     kill=function() stop("The kill method has not been implemented."),
 
     check.killed=function() {
-      if (killed) {
+      if (.killed) {
         stop("This background object has been killed")
       }
     },
 
-    killed=function() killed
+    killed=function() .killed
 
   )
 )
@@ -45,18 +45,18 @@ sequential.process <- setRefClass("sequential.process",
   methods = list(
 
     initialize=function() {
-      has.task <<- FALSE
+      .has.task <<- FALSE
       callSuper()
       .self
     },
 
     task=function(evalExpr, evalEnv=parent.frame()) {
       .self$check.killed()
-      if (has.task)
+      if (.has.task)
         stop("This background object has already has a task")
-      env <<- evalEnv
-      expr <<- evalExpr
-      has.task <<- TRUE
+      .env <<- evalEnv
+      .expr <<- evalExpr
+      .has.task <<- TRUE
     },
 
     done=function() {
@@ -66,16 +66,16 @@ sequential.process <- setRefClass("sequential.process",
 
     value=function() {
       .self$check.killed()
-      if (!evaluated) {
-        val <<- eval(expr, envir=env)
-        evaluated <<- TRUE
+      if (!.evaluated) {
+        .val <<- eval(.expr, envir=.env)
+        .evaluated <<- TRUE
       }
-      val
+      .val
     },
 
     kill=function() {
       .self$check.killed()
-      killed <<- TRUE
+      .killed <<- TRUE
       TRUE
     }
 

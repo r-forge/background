@@ -11,24 +11,24 @@ multicore.process <- setRefClass("multicore.process",
 
     task=function(evalExpr, evalEnv=parent.frame()) {
       .self$check.killed()
-      if (evaluated)
+      if (.evaluated)
         stop("This background object has already evaluated an expression")
       env <<- evalEnv
       expr <<- evalExpr
-      has.task <<- TRUE
-      pj <<- background:::mcpar(expr, env)
+      .has.task <<- TRUE
+      pj <<- multicore.backend:::mcpar(expr, env)
     },
 
     value=function() {
       .self$check.killed()
-      if (!evaluated) {
-        v <- collect(pj)
+      if (!.evaluated) {
+        v <- multicore::collect(pj)
         if (length(v) == 0) {
           val <<- NULL
         } else {
           val <<- v[[1]]
         }
-        evaluated <<- TRUE
+        .evaluated <<- TRUE
       }
       val
     },
@@ -36,7 +36,7 @@ multicore.process <- setRefClass("multicore.process",
     done=function() {
       .self$check.killed()
       ret <- FALSE
-      if (evaluated) {
+      if (.evaluated) {
         ret <- TRUE
       } else {
         v <- collect(pj, wait=FALSE)
@@ -46,7 +46,7 @@ multicore.process <- setRefClass("multicore.process",
           } else {
             val <<- v[[1]]
           }
-          evaluated <<- TRUE
+          .evaluated <<- TRUE
         }
       }
       ret
@@ -61,7 +61,6 @@ multicore.process <- setRefClass("multicore.process",
   
   )
 )
-assign("multicore.process", multicore.process, .GlobalEnv)
 
 .onLoad <- function(libname, pkgname) {
   backend <- options()$background.backend
@@ -69,4 +68,5 @@ assign("multicore.process", multicore.process, .GlobalEnv)
     warning("A backend has previously been set.  Multicore is now the backend")
   }
   options(background.backend="multicore.process")
+  assign("multicore.process", multicore.process, .GlobalEnv)
 }
