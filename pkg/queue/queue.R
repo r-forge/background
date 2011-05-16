@@ -14,16 +14,16 @@ queue.interface <- setRefClass("queue.interface",
   )
 )
 
-setClass("redis.queue.pickle", contains="pickle", 
-  representation=c(handle="character", host="character", port="character"))
+setClass("redis.queue.serialize", contains="serialize", 
+  representation=list(handle="character", host="character", port="character"))
 
-setMethod("unpickle", signature(p="redis.queue.pickle"), 
+setMethod("unserialize", signature(p="redis.queue.serialize"), 
   function(p) {
     redis.queue$new(.handle=p@handle, .host=p@host, .port=p@port)
   })
 
 redis.queue <- setRefClass("redis.queue", 
-  contains=c("queue.interface", "pickle.interface"),
+  contains=c("queue.interface", "serialize.interface"),
   fields=list(.handle="character", .host="character", .port="character"),
   methods=list(
     
@@ -54,8 +54,8 @@ redis.queue <- setRefClass("redis.queue",
       redisRPop(.handle)
     },
 
-    pickle=function() {
-      new("redis.queue.pickle", handle=.handle, host=.host port=.port)
+    serialize=function() {
+      new("redis.queue.serialize", handle=.handle, host=.host, port=.port)
     }
   )
 )

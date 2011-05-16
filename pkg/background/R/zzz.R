@@ -17,7 +17,7 @@ process.interface <- setRefClass("process.interface",
       .self
     },
 
-    copy=function(shallow) stop("Future objects cannot be deep copied."),
+    copy=function(shallow) stop("Background objects cannot be deep copied."),
 
     task=function() stop("The task method has not been implemented."),
 
