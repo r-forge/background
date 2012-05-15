@@ -1,5 +1,5 @@
 source("../background/background.R")
-source("q.R")
+source("queue.R")
 
 q <- redis.q$new()
 q$push(1)

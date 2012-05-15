@@ -4,7 +4,7 @@ require(utils)
 
 
 process.interface <- setRefClass("process.interface",
-  fields = list(.evaluated="logical", .has.task="logical", .expr="call", 
+  fields = list(.evaluated="logical", .has.task="logical", .expr="ANY", 
     .env="environment", .val="ANY", .killed="logical"),
 
   methods=list(
@@ -56,6 +56,7 @@ sequential.process <- setRefClass("sequential.process",
         stop("This background object has already has a task")
       .env <<- evalEnv
       .expr <<- evalExpr
+      print(class(evalExpr))
       .has.task <<- TRUE
     },
 

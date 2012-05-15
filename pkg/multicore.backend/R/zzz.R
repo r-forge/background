@@ -13,10 +13,10 @@ multicore.process <- setRefClass("multicore.process",
       .self$check.killed()
       if (.evaluated)
         stop("This background object has already evaluated an expression")
-      env <<- evalEnv
-      expr <<- evalExpr
+      .env <<- evalEnv
+      .expr <<- evalExpr
       .has.task <<- TRUE
-      pj <<- multicore.backend:::mcpar(expr, env)
+      pj <<- multicore.backend:::mcpar(.expr, .env)
     },
 
     value=function() {
@@ -24,13 +24,13 @@ multicore.process <- setRefClass("multicore.process",
       if (!.evaluated) {
         v <- multicore::collect(pj)
         if (length(v) == 0) {
-          val <<- NULL
+          .val <<- NULL
         } else {
-          val <<- v[[1]]
+          .val <<- v[[1]]
         }
         .evaluated <<- TRUE
       }
-      val
+      .val
     },
 
     done=function() {
@@ -42,9 +42,9 @@ multicore.process <- setRefClass("multicore.process",
         v <- collect(pj, wait=FALSE)
         if( !is.null(v) ) {
           if (length(v) == 0) {
-            val <<- NULL
+            .val <<- NULL
           } else {
-            val <<- v[[1]]
+            .val <<- v[[1]]
           }
           .evaluated <<- TRUE
         }
@@ -55,7 +55,7 @@ multicore.process <- setRefClass("multicore.process",
     kill=function() {
       .self$check.killed()
       multicore::kill(pj)
-      killed <<- TRUE
+      .killed <<- TRUE
       TRUE
     }
   
