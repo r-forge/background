@@ -1,5 +1,5 @@
+# Three components in a single pipe.
 source("stream.r")
-source("../../queue/queue.R")
 
 pl <- create.pipeline()
 
@@ -37,7 +37,7 @@ pl <- add.connection(pl, "A", "B")
 pl <- add.connection(pl, "B", "C")
 
 # You can see the structure of the pipeline with 
-plot(pl)
+#plot(pl)
 
 # And we can run each of the components 10 times sequentially.
 run.seq(pl, 10)

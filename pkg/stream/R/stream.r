@@ -1,4 +1,5 @@
 require(igraph)
+source('../../queue/queue.R')
 
 # Processing pipeline is composed of computing components (vertices) and
 # queues (arcs).
