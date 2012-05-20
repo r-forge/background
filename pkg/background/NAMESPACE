@@ -1,3 +1,4 @@
 import(methods)
 export(bg, fg, kill, done, killed, backend)
+exportClasses(process.interface, sequential.process)
   

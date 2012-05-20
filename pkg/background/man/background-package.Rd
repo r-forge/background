@@ -10,8 +10,8 @@ Perform calculations concurently in the background thereby freeing the \R
 console to perform other tasks.  The package currently supports a sequential
 backend, where the calculation is evaluted when it is brought into the
 foreground along with a multicore backend, where the calculation is started
-immediately after it is backgrounded.  Other backends such as Redis,
-pvm, and nws are planned.
+immediately after it is backgrounded.  Other packages, such as 
+multicore.background can be used for true process backgrounding.
 }
 \details{
 \tabular{ll}{
