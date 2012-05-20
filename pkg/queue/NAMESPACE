@@ -1,0 +1,4 @@
+import(methods)
+export(push, pop, create.queue)
+exportClasses(queue.interface, basic.queue)
+  
