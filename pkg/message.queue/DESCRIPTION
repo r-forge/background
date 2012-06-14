@@ -1,0 +1,12 @@
+Package: message.queue
+Type: Package
+Title: What the package does (short line)
+Version: 0.1
+Date: 2012-06-11
+Author: Michael Kane
+Maintainer: Michael Kane <kaneplusplus@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: LGPL-2
+Depends: methods, Rcpp (>= 0.9.10), queue
+LinkingTo: Rcpp
+RcppModules: RawMessageQueue

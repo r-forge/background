@@ -1,7 +1,7 @@
 \name{push, pop}
-\alias{queue}
 \alias{push}
 \alias{pop}
+\alias{queue}
 \title{Functions for queue operations}
 \description{
 A queue is a first-in-first-out (FIFO) data structure.  The queue package

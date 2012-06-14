@@ -1,6 +1,5 @@
-\name{background-package}
-\alias{background-package}
-\alias{background}
+\name{queue-package}
+\alias{queue-package}
 \docType{package}
 \title{
 Queue data structures

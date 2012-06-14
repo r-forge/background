@@ -1,0 +1,4 @@
+useDynLib(message.queue)
+exportPattern("^[[:alpha:]]+")
+import(Rcpp, queue)
+exportClasses(message.queue)

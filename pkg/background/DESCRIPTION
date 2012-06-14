@@ -6,12 +6,6 @@ Date: 2012-05-19
 Author: Michael Kane
 Maintainer: Michael Kane <kaneplusplus@gmail.com>
 Depends: methods
-Description: Perform calculations concurently in the 
-background thereby freeing the R
-console to perform other tasks.  The package currently supports a sequential
-backend, where the calculation is evaluted when it is brought into the
-foreground along with a multicore backend, where the calculation is started
-immediately after it is backgrounded.  Other packages, such as 
-multicore.background can be used for true process backgrounding.
-License: LGPL2
+Description: Perform calculations concurently in the background thereby freeing the R console to perform other tasks.  The package currently supports a sequential backend, where the calculation is evaluted when it is brought into the foreground along with a multicore backend, where the calculation is started immediately after it is backgrounded.  Other packages, such as multicore.background can be used for true process backgrounding.
+License: LGPL-2
 LazyLoad: yes
