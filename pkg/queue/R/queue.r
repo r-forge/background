@@ -24,11 +24,13 @@ basic.queue <- setRefClass("basic.queue",
     }
   ))
 
-create.queue <- function(type=NULL, ...) {
-  if (is.null(options()$queue.type)) {
-    options(queue.type="basic.queue")
+queue <- function(type=NULL, ...) {
+  if (is.null(type)) {
+#    options(queue.type="basic.queue")
+    type="basic.queue"
   }
-  eval(parse(text=paste(options()$queue.type, "$new(...)", sep='')))
+  eval(parse(text=paste(type, "$new(...)", sep='')))
+#  eval(parse(text=paste(options()$queue.type, "$new(...)", sep='')))
 }
 
 push <- function( q, val ) {

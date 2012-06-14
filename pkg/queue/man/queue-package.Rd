@@ -40,7 +40,7 @@ Maintainer: Mike <kaneplusplus@gmail.com>
 %}
 \examples{
 # Create a queue.
-q <- create.queue()
+q <- queue()
 
 # Push the number one through 10 onto it.
 for (i in 1:10) {

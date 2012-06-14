@@ -13,5 +13,5 @@ Description: A queue is a sequential data structure allowing users
   is appropriate for use on a single-process R session.  However,
   there are other packages, such as redis.queue, that allow data
   structures to be passed between processes.
-License: LGPL2
+License: LGPL-2
 LazyLoad: yes

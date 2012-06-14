@@ -1,20 +1,23 @@
 \name{push, pop}
-\alias{create.queue}
+\alias{queue}
 \alias{push}
 \alias{pop}
 \title{Functions for queue operations}
 \description{
-
+A queue is a first-in-first-out (FIFO) data structure.  The queue package
+provides a basic interface and implementation for queues.  The packages
+also include ``hook'' for more sophisticated, inter-process messaging.
 }
 \usage{
-create.queue(type=NULL, ...)
+queue(type=NULL, ...)
 push(q, val)
 pop(q)
 }
 \arguments{
+  \item{type}{The type of queue to create; default is \code{basic.queue}}
   \item{q}{The queue to push or pop values from}
   \item{val}{The value to push onto the queue}
-  \item{..}{Other parameters}
+  \item{...}{Other parameters}
 }
 \details{
 By default the \code{create.queue} function creates a \code{basic.queue}
@@ -24,7 +27,7 @@ the \code{redis.queue} package arguments such as the shared
 resource name must be specified via the \code{name} parameter.
 }
 \value{
-\code{create.queue} returns the queue data structure.
+\code{queue} returns the queue data structure.
 
 \code{push} returns \code{TRUE} or \code{FALSE} depending on whether
 or not the push is successful.
