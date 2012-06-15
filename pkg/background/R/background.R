@@ -106,7 +106,7 @@ killed <- function( process ) {
   process$killed()
 }
 
-backend <- function( backendName=NULL ) {
+register.background <- function( backendName=NULL ) {
   if (is.null(backendName)) {
     if (is.null(options()$background.backend)) {
       stop("No backend has been specified")

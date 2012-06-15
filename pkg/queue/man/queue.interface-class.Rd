@@ -2,6 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{queue.interface-class}
+\alias{queue.interface}
 
 \title{Class ``queue.interface''}
 \description{The \code{queue.interface} class provides a reference object
