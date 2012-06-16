@@ -32,7 +32,8 @@ class RawMessageQueue
         mutex.unlock();
         if (destroyThis)
         {
-          shared_memory_object::remove((string("sem.")+_name+"_counter_mutex").c_str());
+          shared_memory_object::remove((string("sem.")+
+            _name+"_counter_mutex").c_str());
           message_queue::remove(_name.c_str());
         }
       }

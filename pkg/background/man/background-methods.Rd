@@ -7,7 +7,12 @@
 \alias{register.background}
 \title{Functions for backgrounding calculations}
 \description{
-a description
+Perform calculations concurently in the background thereby freeing the \R 
+console to perform other tasks.  The package currently supports a sequential 
+backend, where the calculation is evaluted when it is brought into the 
+foreground along with a multicore backend, where the calculation is started 
+immediately after it is backgrounded.  Other packages, such as 
+\pkg{multicore.background} can be used for true process backgrounding.
 }
 \usage{
 register.background(backendName=NULL)
@@ -18,7 +23,8 @@ kill(process)
 killed(process)
 }
 \arguments{
-  \item{backendName}{The name of the reference class backgrounding the calculations}
+  \item{backendName}{The name of the reference class backgrounding the 
+    calculations}
   \item{expr}{The expression to be calculated in the background}
   \item{par.gen}{An object inherited from \code{bg.interface} that 
     provides the concurrent backend}
@@ -26,14 +32,14 @@ killed(process)
 }
 \details{
 The \code{bg} function is used to background a calculation.  After 
-a calculation is backgrounded, the 
-\code{done} function allows a user to find out if the calculation
-is complete.  The \code{fg} function allows a user to retrieve
-the result of the calculation.  If the \code{fg} function is called
-before the calculation is complete, then the \R session will block until
-it is complete and then the result is returned.  The \code{kill} function
-allows a user to kill a backgrounded calculation and the \code{killed} function
-checks to see if a running calculation has been killed.
+a calculation is backgrounded, the \code{done} function allows 
+a user to find out if the calculation is complete.  The \code{fg} 
+function allows a user to retrieve the result of the calculation.  
+If the \code{fg} function is called before the calculation is complete, 
+then the \R session will block until it is complete and then the result 
+is returned.  The \code{kill} function allows a user to kill a 
+backgrounded calculation and the \code{killed} function checks to see if 
+a running calculation has been killed.
 }
 \value{
 \code{bg} returns a handle to the backgrounded calculation which can then
@@ -52,16 +58,7 @@ or not the backgrounded calculation is complete.
 \author{
 Michael Kane
 }
-%\note{
-%%  ~~further notes~~
-%}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-%\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-%}
-\examples{\dontrun{
+\examples{
 # Background a simple R expression.
 bg.comp <- bg({Sys.sleep(2); "Awake!\n"})
 
@@ -72,4 +69,4 @@ if (!done(bg.comp)) {
 
 # Output the result.
 cat(fg(bg.comp))
-}}
+}
