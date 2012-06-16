@@ -4,13 +4,13 @@
 \alias{done}
 \alias{kill}
 \alias{killed}
-\alias{backend}
+\alias{register.background}
 \title{Functions for backgrounding calculations}
 \description{
 a description
 }
 \usage{
-backend(backendName=NULL)
+register.background(backendName=NULL)
 bg(expr, par.gen=options()$background.backend)
 done(process)
 fg(process)

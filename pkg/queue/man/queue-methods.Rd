@@ -2,6 +2,7 @@
 \alias{push}
 \alias{pop}
 \alias{queue}
+\alias{register.queue}
 \title{Functions for queue operations}
 \description{
 A queue is a first-in-first-out (FIFO) data structure.  The queue package
@@ -9,7 +10,8 @@ provides a basic interface and implementation for queues.  The packages
 also include ``hook'' for more sophisticated, inter-process messaging.
 }
 \usage{
-queue(type=NULL, ...)
+register.queue(type)
+queue(...)
 push(q, val)
 pop(q)
 }
@@ -20,7 +22,7 @@ pop(q)
   \item{...}{Other parameters}
 }
 \details{
-By default the \code{create.queue} function creates a \code{basic.queue}
+By default the \code{queue} function creates a \code{basic.queue}
 which can be used on a single \R process for sequential data
 storage.  When distributed queues are used, as in the case with
 the \code{redis.queue} package arguments such as the shared 

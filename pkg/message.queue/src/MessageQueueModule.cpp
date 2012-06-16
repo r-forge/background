@@ -56,7 +56,8 @@ class RawMessageQueue
       try
       {
         message_queue::remove(_name.c_str());
-        _pmq = new message_queue(create_only, _name.c_str(), DEFAULT_QUEUE_SIZE, DEFAULT_BUFFER_SIZE);
+        _pmq = new message_queue(open_or_create, _name.c_str(), 
+          DEFAULT_QUEUE_SIZE, DEFAULT_BUFFER_SIZE);
       }
       catch (interprocess_exception &e)
       {

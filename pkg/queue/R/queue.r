@@ -24,13 +24,11 @@ basic.queue <- setRefClass("basic.queue",
     }
   ))
 
-queue <- function(type=NULL, ...) {
-  if (is.null(type)) {
-#    options(queue.type="basic.queue")
-    type="basic.queue"
+queue <- function(...) {
+  if (is.null(options()$queue.backend)) {
+    options(queue.backend="basic.queue")  
   }
-  eval(parse(text=paste(type, "$new(...)", sep='')))
-#  eval(parse(text=paste(options()$queue.type, "$new(...)", sep='')))
+  eval(parse(text=paste(options()$queue.backend, "$new(...)", sep='')))
 }
 
 push <- function( q, val ) {
@@ -39,6 +37,17 @@ push <- function( q, val ) {
 
 pop <- function(q) {
   q$pop()
+}
+
+register.queue <- function(type) {
+  # For right now I can only check to see if the backendName exists.
+  # It would be nice to see if it inherits from process.interface.
+  if (!exists(type)) {
+    stop(paste("The reference class", type, "could not be found"))
+  } else {
+    options(queue.backend=type)
+  }
+  return(TRUE)
 }
 
 # Forget Redis queues... for now
