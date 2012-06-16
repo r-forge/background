@@ -1,0 +1,3 @@
+import(methods, background)
+exportPattern("^[[:alpha:]]+")
+exportClasses(multicore.process)
