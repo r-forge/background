@@ -1,4 +1,0 @@
-PKG_CPPFLAGS=-I../include -I/opt/local/include
-
-PKG_LIBS=/Library/Frameworks/R.framework/Versions/2.15/Resources/library/Rcpp/lib/x86_64/libRcpp.a
-
